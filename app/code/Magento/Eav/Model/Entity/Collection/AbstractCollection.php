@@ -406,7 +406,7 @@ abstract class AbstractCollection extends AbstractDb implements SourceProviderIn
     public function addAttributeToSort($attribute, $dir = self::SORT_ORDER_ASC)
     {
         if (isset($this->_joinFields[$attribute])) {
-            $this->getSelect()->order($this->_getAttributeFieldName($attribute) . ' ' . $dir);
+            $this->getSelect()->order(new \Zend_Db_Expr($this->_getAttributeFieldName($attribute) . ' ' . $dir));
             return $this;
         }
         if (isset($this->_staticFields[$attribute])) {
@@ -438,7 +438,7 @@ abstract class AbstractCollection extends AbstractDb implements SourceProviderIn
             }
 
             $orderExpr .= ' ' . $dir;
-            $this->getSelect()->order($orderExpr);
+            $this->getSelect()->order(new \Zend_Db_Expr($orderExpr));
         }
         return $this;
     }
