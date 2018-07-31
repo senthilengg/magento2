@@ -1372,7 +1372,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
         }
 
         if ($request->getMasterTrackingId()) {
-            $requestClient['RequestedShipment']['MasterTrackingId'] = $request->getMasterTrackingId();
+            $requestClient['RequestedShipment']['MasterTrackingId']['TrackingNumber'] = $request->getMasterTrackingId();
         }
 
         if ($request->getShippingMethod() == self::RATE_REQUEST_SMARTPOST) {
